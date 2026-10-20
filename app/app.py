@@ -106,14 +106,18 @@ def get_cleaned_data():
     return pd.DataFrame()
 
 
-@st.cache_data
+
+@st.cache_resource
 def get_db_connection():
-    """Create in-memory SQLite database populated with customer dataset."""
+    """Create and cache an in-memory SQLite database populated with customer dataset.
+    Uses @st.cache_resource because sqlite3.Connection is not pickle-serializable.
+    """
     df = get_cleaned_data()
     conn = sqlite3.connect(":memory:", check_same_thread=False)
     if not df.empty:
         df.to_sql("customers", conn, index=False)
     return conn
+
 
 
 # ── Sidebar Navigation ─────────────────────────────────────────────
@@ -767,6 +771,7 @@ elif page == "ℹ️ About & Attribution":
         - **Author**: **Aanjaneya Pandey**
         - **GitHub**: [Aanjaneya24](https://github.com/Aanjaneya24)
         - **Repository**: [https://github.com/Aanjaneya24/ChurnLens](https://github.com/Aanjaneya24/ChurnLens)
+        - **Live App**: [https://churnlens-usz4.onrender.com](https://churnlens-usz4.onrender.com)
         - **Tech Stack**: Python, Scikit-learn, Pandas, Streamlit, SQL, Joblib, Matplotlib, Seaborn
 
         ---

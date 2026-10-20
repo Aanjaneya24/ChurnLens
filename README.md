@@ -1,9 +1,9 @@
 # 🔮 ChurnLens — Customer Churn Prediction & Business Intelligence
 
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-churnlens--usz4.onrender.com-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://churnlens-usz4.onrender.com)
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.4+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://render.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 An enterprise-ready **Customer Churn Prediction and Business Intelligence Platform** built on the **Telco Customer Churn Dataset** (7,032 subscriber records).
