@@ -1,0 +1,28 @@
+{
+  "accuracy": 0.7889,
+  "precision": 0.6288,
+  "recall": 0.5027,
+  "f1_score": 0.5587,
+  "roc_auc": 0.8248,
+  "features": [
+    "gender",
+    "SeniorCitizen",
+    "Partner",
+    "Dependents",
+    "tenure",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod",
+    "MonthlyCharges",
+    "TotalCharges"
+  ]
+}

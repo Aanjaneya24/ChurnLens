@@ -1,0 +1,47 @@
+# Python byte-code and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+secrets.toml
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# IDE and Editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Streamlit Local Runtime
+.streamlit/secrets.toml
