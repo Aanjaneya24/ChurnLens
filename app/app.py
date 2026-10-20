@@ -37,7 +37,7 @@ SQL_PATH = ROOT_DIR / "sql" / "queries.sql"
 # ── Streamlit Page Configuration ──────────────────────────────────
 st.set_page_config(
     page_title="ChurnLens — Churn Prediction & BI",
-    page_icon="🔮",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -130,23 +130,23 @@ with st.sidebar:
     page = st.radio(
         "Navigation",
         [
-            "🔮 Single Customer Prediction",
-            "📁 Batch Scoring & Intelligence",
-            "📊 Executive BI Dashboard",
-            "🗄️ SQL Analytics Studio",
-            "🤖 Model Governance & Card",
-            "ℹ️ About & Attribution",
+            "Single Customer Prediction",
+            "Batch Scoring & Intelligence",
+            "Executive BI Dashboard",
+            "SQL Analytics Studio",
+            "Model Governance & Card",
+            "About & Attribution",
         ],
         index=0,
     )
 
     st.markdown("---")
-    st.markdown("### ⚙️ System Status")
+    st.markdown("### System Status")
     try:
         load_model()
-        st.success("🟢 ML Engine: Online (Random Forest)")
+        st.success("ML Engine: Online (Random Forest)")
     except Exception as e:
-        st.error(f"🔴 ML Engine: Offline ({e})")
+        st.error(f"ML Engine: Offline ({e})")
 
     st.markdown(
         """
@@ -163,7 +163,7 @@ with st.sidebar:
 st.markdown(
     """
     <div class="main-header">
-        <h1>🔮 ChurnLens</h1>
+        <h1>ChurnLens</h1>
         <p>AI-Powered Customer Retention Forecasting, Business Intelligence & Risk Playbooks</p>
     </div>
     """,
@@ -174,15 +174,15 @@ st.markdown(
 # ════════════════════════════════════════════════════════════════════
 # 1. SINGLE CUSTOMER PREDICTION
 # ════════════════════════════════════════════════════════════════════
-if page == "🔮 Single Customer Prediction":
-    st.subheader("🎯 Real-Time Customer Risk Scoring")
+if page == "Single Customer Prediction":
+    st.subheader("Real-Time Customer Risk Scoring")
     st.write(
         "Enter subscriber attributes below to predict churn probability, evaluate risk drivers, and retrieve custom retention strategies."
     )
 
-    with st.expander("💡 Quick Fill Presets (Click to load scenario)", expanded=False):
+    with st.expander("Quick Fill Presets (Click to load scenario)", expanded=False):
         preset_cols = st.columns(3)
-        if preset_cols[0].button("⚠️ High Churn Risk Profile"):
+        if preset_cols[0].button("High Churn Risk Profile"):
             st.session_state["p_tenure"] = 2
             st.session_state["p_contract"] = "Month-to-month"
             st.session_state["p_monthly"] = 92.0
@@ -191,7 +191,7 @@ if page == "🔮 Single Customer Prediction":
             st.session_state["p_security"] = "No"
             st.session_state["p_support"] = "No"
             st.session_state["p_paperless"] = "Yes"
-        if preset_cols[1].button("✅ High Loyalty Profile"):
+        if preset_cols[1].button("High Loyalty Profile"):
             st.session_state["p_tenure"] = 62
             st.session_state["p_contract"] = "Two year"
             st.session_state["p_monthly"] = 52.0
@@ -200,7 +200,7 @@ if page == "🔮 Single Customer Prediction":
             st.session_state["p_security"] = "Yes"
             st.session_state["p_support"] = "Yes"
             st.session_state["p_paperless"] = "No"
-        if preset_cols[2].button("🔄 Typical Average Customer"):
+        if preset_cols[2].button("Typical Average Customer"):
             st.session_state["p_tenure"] = 24
             st.session_state["p_contract"] = "One year"
             st.session_state["p_monthly"] = 65.0
@@ -214,14 +214,14 @@ if page == "🔮 Single Customer Prediction":
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.markdown("#### 👤 Demographics")
+            st.markdown("#### Demographics")
             gender = st.selectbox("Gender", ["Male", "Female"])
             senior = st.selectbox("Senior Citizen", ["No", "Yes"])
             partner = st.selectbox("Partner", ["Yes", "No"])
             dependents = st.selectbox("Dependents", ["No", "Yes"])
 
         with col2:
-            st.markdown("#### 📦 Subscribed Services")
+            st.markdown("#### Subscribed Services")
             phone = st.selectbox("Phone Service", ["Yes", "No"])
             if phone == "No":
                 multiple = "No phone service"
@@ -236,7 +236,7 @@ if page == "🔮 Single Customer Prediction":
             )
 
             if internet == "No":
-                st.info("ℹ️ Internet add-ons auto-set to 'No internet service'")
+                st.info("Internet add-ons auto-set to 'No internet service'")
                 security = "No internet service"
                 backup = "No internet service"
                 protection = "No internet service"
@@ -254,7 +254,7 @@ if page == "🔮 Single Customer Prediction":
                 movies = st.selectbox("Streaming Movies", ["No", "Yes"])
 
         with col3:
-            st.markdown("#### 💳 Account & Billing")
+            st.markdown("#### Account & Billing")
             tenure = st.slider(
                 "Tenure (months active)",
                 min_value=0,
@@ -307,7 +307,7 @@ if page == "🔮 Single Customer Prediction":
                 step=10.0,
             )
 
-        submit_btn = st.form_submit_button("🔮 Calculate Churn Risk Score", use_container_width=True)
+        submit_btn = st.form_submit_button("Calculate Churn Risk Score", use_container_width=True)
 
     if submit_btn:
         input_payload = {
@@ -336,7 +336,7 @@ if page == "🔮 Single Customer Prediction":
             result = predict_single(input_payload)
 
         st.markdown("---")
-        st.subheader("🎯 Prediction & Risk Diagnostic")
+        st.subheader("Prediction & Risk Diagnostic")
 
         # Top summary cards
         c_res1, c_res2, c_res3 = st.columns([1.5, 1, 1])
@@ -344,17 +344,17 @@ if page == "🔮 Single Customer Prediction":
         with c_res1:
             if result["risk_level"] == "HIGH":
                 st.error(
-                    f"### ⚠️ HIGH RISK — {result['prediction_label'].upper()}\n"
+                    f"### HIGH RISK — {result['prediction_label'].upper()}\n"
                     f"This customer displays significant signs of imminent churn. Immediate retention intervention is recommended."
                 )
             elif result["risk_level"] == "MEDIUM":
                 st.warning(
-                    f"### 🟡 MEDIUM RISK — {result['prediction_label'].upper()}\n"
+                    f"### MEDIUM RISK — {result['prediction_label'].upper()}\n"
                     f"Customer displays vulnerable metrics. Proactive engagement will mitigate risk."
                 )
             else:
                 st.success(
-                    f"### ✅ LOW RISK — {result['prediction_label'].upper()}\n"
+                    f"### LOW RISK — {result['prediction_label'].upper()}\n"
                     f"Customer profile indicates high loyalty and low propensity to cancel."
                 )
 
@@ -376,7 +376,7 @@ if page == "🔮 Single Customer Prediction":
         col_dr, col_act = st.columns(2)
 
         with col_dr:
-            st.markdown("#### 🔍 Primary Risk Drivers")
+            st.markdown("#### Primary Risk Drivers")
             if result["risk_drivers"]:
                 for d in result["risk_drivers"]:
                     st.markdown(f"- **[{d['category']} — {d['impact']}]**: {d['detail']}")
@@ -384,17 +384,17 @@ if page == "🔮 Single Customer Prediction":
                 st.write("No adverse risk flags identified for this profile.")
 
         with col_act:
-            st.markdown("#### 📋 Recommended Retention Playbook")
+            st.markdown("#### Recommended Retention Playbook")
             if result["retention_recommendations"]:
                 for act in result["retention_recommendations"]:
-                    st.markdown(f"- 💡 {act}")
+                    st.markdown(f"- {act}")
 
 
 # ════════════════════════════════════════════════════════════════════
 # 2. BATCH SCORING & INTELLIGENCE
 # ════════════════════════════════════════════════════════════════════
-elif page == "📁 Batch Scoring & Intelligence":
-    st.subheader("📁 Bulk Customer Churn Scoring")
+elif page == "Batch Scoring & Intelligence":
+    st.subheader("Bulk Customer Churn Scoring")
     st.write(
         "Upload a CSV of customer records to score churn propensity in bulk, segment high-risk accounts, and download retention action lists."
     )
@@ -406,7 +406,7 @@ elif page == "📁 Batch Scoring & Intelligence":
 
     with col_sm:
         st.write("Or evaluate sample records:")
-        use_sample = st.button("📥 Load 25 Sample Customers")
+        use_sample = st.button("Load 25 Sample Customers")
 
     batch_df = None
     if uploaded_file is not None:
@@ -425,7 +425,7 @@ elif page == "📁 Batch Scoring & Intelligence":
         with st.spinner("Scoring batch dataset through ChurnLens model..."):
             scored_df = predict_batch(batch_df)
 
-        st.markdown("### 📊 Batch Executive Summary")
+        st.markdown("### Batch Executive Summary")
         m1, m2, m3, m4 = st.columns(4)
 
         total_scored = len(scored_df)
@@ -452,7 +452,7 @@ elif page == "📁 Batch Scoring & Intelligence":
             f"{low_risk_count/total_scored*100:.1f}%",
         )
 
-        st.markdown("### 📋 Scored Records")
+        st.markdown("### Scored Records")
         display_cols = [
             col
             for col in [
@@ -471,7 +471,7 @@ elif page == "📁 Batch Scoring & Intelligence":
 
         csv_data = scored_df.to_csv(index=False).encode("utf-8")
         st.download_button(
-            label="⬇️ Download Enriched Churn Risk CSV",
+            label="Download Enriched Churn Risk CSV",
             data=csv_data,
             file_name="churnlens_scored_customers.csv",
             mime="text/csv",
@@ -481,8 +481,8 @@ elif page == "📁 Batch Scoring & Intelligence":
 # ════════════════════════════════════════════════════════════════════
 # 3. EXECUTIVE BI DASHBOARD
 # ════════════════════════════════════════════════════════════════════
-elif page == "📊 Executive BI Dashboard":
-    st.subheader("📊 Executive Business Intelligence & Churn Trends")
+elif page == "Executive BI Dashboard":
+    st.subheader("Executive Business Intelligence & Churn Trends")
     st.write(
         "Interactive analysis of retention drivers, contract exposures, and financial metrics across 7,032 Telco subscribers."
     )
@@ -508,7 +508,7 @@ elif page == "📊 Executive BI Dashboard":
         c_v1, c_v2 = st.columns(2)
 
         with c_v1:
-            st.markdown("#### 📄 Churn Rate by Contract Type")
+            st.markdown("#### Churn Rate by Contract Type")
             contract_stats = (
                 df.groupby("Contract")
                 .agg(Total=("Churn", "count"), Churned=("Churn", "sum"))
@@ -540,7 +540,7 @@ elif page == "📊 Executive BI Dashboard":
             plt.close()
 
         with c_v2:
-            st.markdown("#### 💳 Churn Rate by Payment Channel")
+            st.markdown("#### Churn Rate by Payment Channel")
             pm_stats = (
                 df.groupby("PaymentMethod")
                 .agg(Total=("Churn", "count"), Churned=("Churn", "sum"))
@@ -586,7 +586,7 @@ elif page == "📊 Executive BI Dashboard":
             plt.close()
 
         with c_v4:
-            st.markdown("#### 💵 Monthly Charges Distribution by Churn")
+            st.markdown("#### Monthly Charges Distribution by Churn")
             fig, ax = plt.subplots(figsize=(6, 4))
             sns.boxplot(
                 x="Churn",
@@ -605,8 +605,8 @@ elif page == "📊 Executive BI Dashboard":
 # ════════════════════════════════════════════════════════════════════
 # 4. SQL ANALYTICS STUDIO
 # ════════════════════════════════════════════════════════════════════
-elif page == "🗄️ SQL Analytics Studio":
-    st.subheader("🗄️ SQL Analytics Studio")
+elif page == "SQL Analytics Studio":
+    st.subheader("SQL Analytics Studio")
     st.write(
         "Execute production SQL queries against the Telco Customer dataset using the in-memory SQLite engine."
     )
@@ -684,7 +684,7 @@ ORDER BY InternetService, churn_rate_pct DESC;""",
 
     custom_sql = st.text_area("SQL Editor (Table name: customers)", value=default_sql, height=160)
 
-    if st.button("▶️ Execute Query", use_container_width=True):
+    if st.button("Execute Query", use_container_width=True):
         try:
             query_res = pd.read_sql_query(custom_sql, conn)
             st.success(f"Query returned {len(query_res)} rows.")
@@ -692,7 +692,7 @@ ORDER BY InternetService, churn_rate_pct DESC;""",
 
             csv_sql = query_res.to_csv(index=False).encode("utf-8")
             st.download_button(
-                "⬇️ Download Query Results (CSV)",
+                "Download Query Results (CSV)",
                 data=csv_sql,
                 file_name="churnlens_query_result.csv",
                 mime="text/csv",
@@ -704,8 +704,8 @@ ORDER BY InternetService, churn_rate_pct DESC;""",
 # ════════════════════════════════════════════════════════════════════
 # 5. MODEL GOVERNANCE & CARD
 # ════════════════════════════════════════════════════════════════════
-elif page == "🤖 Model Governance & Card":
-    st.subheader("🤖 Model Governance & Architecture")
+elif page == "Model Governance & Card":
+    st.subheader("Model Governance & Architecture")
     st.write(
         "Transparency, performance benchmarks, and feature attribution details for the production ChurnLens classifier."
     )
@@ -721,7 +721,7 @@ elif page == "🤖 Model Governance & Card":
     c_art1, c_art2 = st.columns(2)
 
     with c_art1:
-        st.markdown("#### 🎯 Confusion Matrix")
+        st.markdown("#### Confusion Matrix")
         cm_path = VISUALS_DIR / "confusion_matrix.png"
         if cm_path.exists():
             st.image(str(cm_path), caption="Random Forest Confusion Matrix on Stratified Test Holdout")
@@ -729,14 +729,14 @@ elif page == "🤖 Model Governance & Card":
             st.info("Run `python scripts/train.py` to generate the latest confusion matrix.")
 
     with c_art2:
-        st.markdown("#### 🏆 Top Predictive Features")
+        st.markdown("#### Top Predictive Features")
         feat_path = VISUALS_DIR / "feature_importance.png"
         if feat_path.exists():
             st.image(str(feat_path), caption="Gini Feature Importance Rankings")
         else:
             st.info("Run `python scripts/train.py` to generate feature importances.")
 
-    st.markdown("### 📋 Model Card Specification")
+    st.markdown("### Model Card Specification")
     st.markdown(
         """
         | Attribute | Specification |
@@ -755,11 +755,11 @@ elif page == "🤖 Model Governance & Card":
 # ════════════════════════════════════════════════════════════════════
 # 6. ABOUT & ATTRIBUTION
 # ════════════════════════════════════════════════════════════════════
-elif page == "ℹ️ About & Attribution":
-    st.subheader("ℹ️ About ChurnLens")
+elif page == "About & Attribution":
+    st.subheader("About ChurnLens")
     st.markdown(
         """
-        ### 🌐 Project Overview
+        ### Project Overview
         **ChurnLens** is an enterprise-grade Customer Churn Prediction and Business Intelligence suite
         designed and developed by **Aanjaneya Pandey**.
         It combines predictive machine learning, SQL analytics, and actionable retention playbooks to help
@@ -767,7 +767,7 @@ elif page == "ℹ️ About & Attribution":
 
         ---
 
-        ### 👤 Author & Maintainer
+        ### Author & Maintainer
         - **Author**: **Aanjaneya Pandey**
         - **GitHub**: [Aanjaneya24](https://github.com/Aanjaneya24)
         - **Repository**: [https://github.com/Aanjaneya24/ChurnLens](https://github.com/Aanjaneya24/ChurnLens)
@@ -776,7 +776,7 @@ elif page == "ℹ️ About & Attribution":
 
         ---
 
-        ### ⚖️ License
+        ### License
         This project is licensed under the **MIT License**. Copyright (c) 2026 Aanjaneya Pandey.
         """
     )

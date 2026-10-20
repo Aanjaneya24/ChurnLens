@@ -40,7 +40,7 @@ def run_queries(data_path=DATA_PATH, sql_path=SQL_PATH):
 
         query_num += 1
         print(f"\n{'='*70}")
-        print(f"📊 Query {query_num}: {title}")
+        print(f"Query {query_num}: {title}")
         print(f"{'='*70}")
 
         try:
@@ -48,7 +48,7 @@ def run_queries(data_path=DATA_PATH, sql_path=SQL_PATH):
             print(res_df.to_string(index=False))
             results.append((title, res_df))
         except Exception as e:
-            print(f"❌ Error executing query: {e}")
+            print(f"Error executing query: {e}")
 
     conn.close()
     return results

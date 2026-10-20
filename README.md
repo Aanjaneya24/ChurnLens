@@ -1,6 +1,6 @@
-# 🔮 ChurnLens — Customer Churn Prediction & Business Intelligence
+# ChurnLens — Customer Churn Prediction & Business Intelligence
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-churnlens--usz4.onrender.com-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://churnlens-usz4.onrender.com)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-churnlens--usz4.onrender.com-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://churnlens-usz4.onrender.com)
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.4+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
@@ -12,7 +12,7 @@ ChurnLens combines machine learning risk forecasting, interactive business intel
 
 ---
 
-## 📌 Executive Summary
+## Executive Summary
 
 Customer churn directly erodes recurring revenue. In telecom and subscription businesses, acquiring new customers costs **5x to 7x more** than retaining existing ones. 
 
@@ -25,28 +25,28 @@ Customer churn directly erodes recurring revenue. In telecom and subscription bu
 
 ---
 
-## 🏗️ Architecture & Tech Stack
+## Architecture & Tech Stack
 
 ```text
 ChurnLens Platform
 │
-├── 🔮 UI & BI Layer           ── Streamlit Web Application (app/app.py)
+├── UI & BI Layer           ── Streamlit Web Application (app/app.py)
 │                                 • Interactive Single Customer Scoring
 │                                 • Batch CSV Scoring & Export
 │                                 • Executive KPI & Trend Visualizations
 │                                 • SQL Analytics Studio (in-memory SQLite)
 │                                 • Model Card & Governance View
 │
-├── 🤖 Machine Learning Layer   ── Random Forest Classifier (100 estimators)
+├── Machine Learning Layer   ── Random Forest Classifier (100 estimators)
 │                                 • app/model_service.py (Modular inference)
 │                                 • scripts/train.py (Reproducible training pipeline)
 │                                 • app/churn_model.pkl (Compressed 1.7 MB artifact)
 │
-├── 🗄️ Analytics & SQL Layer   ── SQL Analytics (sql/queries.sql)
+├── Analytics & SQL Layer   ── SQL Analytics (sql/queries.sql)
 │                                 • scripts/run_sql_analysis.py (SQLite BI runner)
 │                                 • Contract, tenure, payment, and revenue queries
 │
-└── 🧪 Quality & Deployment    ── Automated Tests & Render Blueprint
+└── Quality & Deployment    ── Automated Tests & Render Blueprint
                                   • tests/ (pytest suite for model, SQL, & data)
                                   • render.yaml (One-click Render deployment)
 ```
@@ -61,7 +61,7 @@ ChurnLens Platform
 
 ---
 
-## 📂 Project Directory Structure
+## Project Directory Structure
 
 ```text
 ChurnLens/
@@ -105,7 +105,7 @@ ChurnLens/
 
 ---
 
-## 📊 Key Business Intelligence Insights
+## Key Business Intelligence Insights
 
 Analysis across 7,032 customer accounts reveals critical risk drivers and revenue exposure:
 
@@ -119,7 +119,7 @@ Analysis across 7,032 customer accounts reveals critical risk drivers and revenu
 
 ---
 
-## 🤖 Machine Learning Model Performance
+## Machine Learning Model Performance
 
 The ChurnLens model is an optimized **Random Forest Classifier** trained on an 80/20 stratified holdout split:
 
@@ -141,7 +141,7 @@ The ChurnLens model is an optimized **Random Forest Classifier** trained on an 8
 
 ---
 
-## 🚀 Local Installation & Quickstart
+## Local Installation & Quickstart
 
 ### Prerequisites
 - Python 3.11, 3.12, or 3.13
@@ -179,7 +179,7 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 🛠️ CLI Utilities & Model Retraining
+## CLI Utilities & Model Retraining
 
 ### Retrain the Machine Learning Model
 To retrain the model on the latest data, regenerate evaluation metrics, and update confusion matrix / feature importance plots:
@@ -195,7 +195,7 @@ python scripts/run_sql_analysis.py
 
 ---
 
-## ☁️ Deployment on Render
+## Deployment on Render
 
 ChurnLens includes a ready-to-use [`render.yaml`](render.yaml) blueprint specification for zero-configuration deployment on [Render](https://render.com).
 
@@ -230,7 +230,7 @@ If setting up manually in the Render dashboard:
 
 ---
 
-## 🐙 Publishing to Your GitHub Account
+## Publishing to Your GitHub Account
 
 To establish this project under your own GitHub profile (`ChurnLens`):
 
@@ -264,7 +264,7 @@ To establish this project under your own GitHub profile (`ChurnLens`):
 
 ---
 
-## 👤 Author & Maintainer
+## Author & Maintainer
 
 **Aanjaneya Pandey**  
 - **GitHub**: [@Aanjaneya24](https://github.com/Aanjaneya24)  
@@ -272,6 +272,6 @@ To establish this project under your own GitHub profile (`ChurnLens`):
 
 ---
 
-## ⚖️ License
+## License
 
 Distributed under the **MIT License**. Copyright (c) 2026 Aanjaneya Pandey. See [`LICENSE`](LICENSE) for complete terms.
